@@ -1,0 +1,21 @@
+Package: speakfriend
+Title: Very Easy Password Management
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = c("Benjamin", "E."),
+           family = "Wolfe",
+           role = c("aut", "cre"),
+           email = "benjamin.e.wolfe@gmail.com",
+           comment = c(ORCID = "0000-0002-4339-9328"))
+Description: Simplifies password management with clear prompts,
+    graceful error-handling, and informative user messages.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    keyring,
+    rlang,
+    rstudioapi
+RoxygenNote: 6.1.1
+Suggests: 
+    testthat (>= 2.1.0)
