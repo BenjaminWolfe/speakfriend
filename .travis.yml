@@ -33,6 +33,17 @@ deploy:
 #   https://github.com/robotology/idyntree/issues/380
 #   https://github.com/travis-ci/travis-ci/issues/3448
 # guessing, decided to add brew update and brew install md5deep before_install
+
+# Stardate 20191003, still stranded on this dismal planet of Travis-CI.
+# Unsure the natives will allow us to return to our ship.
+# SSL still failing on Linux, and getting a seemingly related error on MacOS:
+#   Running git clone --single-branch -b gh-pages --depth 1 \
+#     'git@github.com:BenjaminWolfe/speakfriend.git'...
+#   Cloning into ...
+#   ssh_askpass: exec(/usr/X11R6/bin/ssh-askpass): No such file or directory
+#   Host key verification failed.
+#   fatal: Could not read from remote repository.
+#   Please make sure you have the correct access rights and the repo exists.
 matrix:
   include:
     - dist: xenial
