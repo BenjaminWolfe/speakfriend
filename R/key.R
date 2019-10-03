@@ -3,7 +3,7 @@
 #' What all passwords has the user set?
 #'
 #' Function includes checks for \code{\link{has_keyring}}
-#' and \code{\link{keyring_is_locked}}.
+#' and \code{\link{keyring_locked}}.
 #'
 #' @param key Character (optional): key name. Chiefly for use in error messages,
 #'   as this function is also called by \code{\link{has_key}},
@@ -20,7 +20,7 @@
 #' list_keys()
 #' }
 list_keys <- function(key = NULL,
-                      ring = getOption("speak.keyring", "friend")) {
+                      ring = getOption("keyring_keyring", "friend")) {
 
   reusable_messaging <- ifelse(
     !is.null(key),
@@ -28,7 +28,7 @@ list_keys <- function(key = NULL,
     "your keyring"
   )
 
-  if (keyring_is_locked()) {
+  if (keyring_locked()) {
     ok_to_proceed <- function() {
       rstudioapi::showQuestion(
         title   = "Your Master Password",
@@ -55,7 +55,7 @@ list_keys <- function(key = NULL,
 #' Has the user set up a given password?
 #'
 #' Function includes checks for \code{\link{has_keyring}}
-#' and \code{\link{keyring_is_locked}}.
+#' and \code{\link{keyring_locked}}.
 #'
 #' @param key Character. The system for which the user wants to check
 #'   the existence of a password.
@@ -69,7 +69,7 @@ list_keys <- function(key = NULL,
 #' has_key("snowflake")
 #' }
 has_key <- function(key,
-                    ring = getOption("speak.keyring", "friend")) {
+                    ring = getOption("keyring_keyring", "friend")) {
   key %in% list_keys(key, ring = ring)
 }
 
@@ -86,7 +86,7 @@ has_key <- function(key,
 #' and either way it will show up in their \code{.Rhistory} file.
 #'
 #' Function includes checks for \code{\link{has_keyring}},
-#' \code{\link{keyring_is_locked}}, and \code{\link{has_key}}.
+#' \code{\link{keyring_locked}}, and \code{\link{has_key}}.
 #' If the key already exists, \code{\link{set_key}} will either overwrite it,
 #' fail, or prompt you, depending on the value of \code{overwrite}.
 #'
@@ -108,7 +108,7 @@ has_key <- function(key,
 set_key <- function(key,
                     password = NULL,
                     overwrite = c("ask", "yes", "no"),
-                    ring = getOption("speak.keyring", "friend")) {
+                    ring = getOption("keyring_keyring", "friend")) {
   overwrite <- rlang::arg_match(overwrite)
 
   if (has_key(key)) {
@@ -159,7 +159,7 @@ set_key <- function(key,
 #' Return the password for a given system.
 #'
 #' Function includes checks for \code{\link{has_keyring}},
-#' \code{\link{keyring_is_locked}}, and \code{\link{has_key}}.
+#' \code{\link{keyring_locked}}, and \code{\link{has_key}}.
 #'
 #' @param key Character. The system for which user wants to retrieve a password.
 #' @param ring Optional. Name of keyring.
@@ -172,7 +172,7 @@ set_key <- function(key,
 #' get_key("snowflake")
 #' }
 get_key <- function(key,
-                    ring = getOption("speak.keyring", "friend")) {
+                    ring = getOption("keyring_keyring", "friend")) {
 
   wants_key <- function(key) {
     if (!interactive_session()) return(FALSE)
@@ -200,7 +200,7 @@ get_key <- function(key,
 #' Delete the password for a given system.
 #'
 #' Function includes checks for \code{\link{has_keyring}},
-#' \code{\link{keyring_is_locked}}, and \code{\link{has_key}}.
+#' \code{\link{keyring_locked}}, and \code{\link{has_key}}.
 #'
 #' @param key Character. The system for which yser wants to retrieve a password.
 #' @param ring Optional. Name of keyring.
@@ -213,7 +213,7 @@ get_key <- function(key,
 #' drop_key("snowflake")
 #' }
 drop_key <- function(key,
-                     ring = getOption("speak.keyring", "friend")) {
+                     ring = getOption("keyring_keyring", "friend")) {
 
   if (!has_key(key)) stop("password not set for ", key)
 

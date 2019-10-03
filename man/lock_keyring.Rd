@@ -4,7 +4,7 @@
 \alias{lock_keyring}
 \title{Lock the keyring}
 \usage{
-lock_keyring(ring = getOption("speak.keyring", "friend"))
+lock_keyring(ring = getOption("keyring_keyring", "friend"))
 }
 \arguments{
 \item{ring}{Optional. Name of keyring.}
@@ -17,7 +17,7 @@ Hide passwords from other users until master password is entered later.
 }
 \details{
 Function includes checks for \code{\link{has_keyring}}
-and \code{\link{keyring_is_locked}}.
+and \code{\link{keyring_locked}}.
 If the keyring is already locked,
 \code{\link{lock_keyring}} will message the user.
 }

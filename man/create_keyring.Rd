@@ -4,7 +4,7 @@
 \alias{create_keyring}
 \title{Create a new keyring}
 \usage{
-create_keyring(ring = getOption("speak.keyring", "friend"))
+create_keyring(ring = getOption("keyring_keyring", "friend"))
 }
 \arguments{
 \item{ring}{Optional. Name of keyring.}

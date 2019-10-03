@@ -7,8 +7,9 @@ Authors@R:
            role = c("aut", "cre"),
            email = "benjamin.e.wolfe@gmail.com",
            comment = c(ORCID = "0000-0002-4339-9328"))
-Description: Simplifies password management with clear prompts,
-    graceful error-handling, and informative user messages.
+Description: Simplifies password management with descriptive prompts,
+    supportive default behaviors, instructive messages,
+    and streamlined functionality.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

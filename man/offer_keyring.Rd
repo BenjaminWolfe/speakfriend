@@ -4,7 +4,7 @@
 \alias{offer_keyring}
 \title{Offer to set up keyring}
 \usage{
-offer_keyring(ring = getOption("speak.keyring", "friend"))
+offer_keyring(ring = getOption("keyring_keyring", "friend"))
 }
 \arguments{
 \item{ring}{Optional. Name of keyring.}
@@ -13,7 +13,7 @@ offer_keyring(ring = getOption("speak.keyring", "friend"))
 Logical. Does the user want to set up a master password?
 }
 \description{
-Unexported, used in \code{\link{keyring_is_locked}}
+Unexported, used in \code{\link{keyring_locked}}
 and \code{\link{unlock_keyring}}.
 }
 \details{

@@ -5,7 +5,7 @@
 \title{Create a key or set a password for an existing key}
 \usage{
 set_key(key, password = NULL, overwrite = c("ask", "yes", "no"),
-  ring = getOption("speak.keyring", "friend"))
+  ring = getOption("keyring_keyring", "friend"))
 }
 \arguments{
 \item{key}{Character. The system for which you want to set up a password.}
@@ -34,7 +34,7 @@ Users could forget and save it as a script,
 and either way it will show up in their \code{.Rhistory} file.
 
 Function includes checks for \code{\link{has_keyring}},
-\code{\link{keyring_is_locked}}, and \code{\link{has_key}}.
+\code{\link{keyring_locked}}, and \code{\link{has_key}}.
 If the key already exists, \code{\link{set_key}} will either overwrite it,
 fail, or prompt you, depending on the value of \code{overwrite}.
 }

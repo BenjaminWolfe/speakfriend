@@ -4,7 +4,7 @@
 \alias{list_keys}
 \title{List keys}
 \usage{
-list_keys(key = NULL, ring = getOption("speak.keyring", "friend"))
+list_keys(key = NULL, ring = getOption("keyring_keyring", "friend"))
 }
 \arguments{
 \item{key}{Character (optional): key name. Chiefly for use in error messages,
@@ -22,7 +22,7 @@ What all passwords has the user set?
 }
 \details{
 Function includes checks for \code{\link{has_keyring}}
-and \code{\link{keyring_is_locked}}.
+and \code{\link{keyring_locked}}.
 }
 \examples{
 \dontrun{

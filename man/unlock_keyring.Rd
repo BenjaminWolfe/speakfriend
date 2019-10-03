@@ -5,7 +5,7 @@
 \title{Unlock the keyring}
 \usage{
 unlock_keyring(master_password = NULL, key = NULL,
-  ring = getOption("speak.keyring", "friend"))
+  ring = getOption("keyring_keyring", "friend"))
 }
 \arguments{
 \item{master_password}{Character, to specify master password in plain text,
@@ -34,7 +34,7 @@ You could forget and save it as a script,
 and either way it will show up in your \code{.Rhistory} file.
 
 Function includes checks for \code{\link{has_keyring}}
-and \code{\link{keyring_is_locked}}.
+and \code{\link{keyring_locked}}.
 If the keyring is already unlocked,
 \code{\link{unlock_keyring}} will message the user.
 }

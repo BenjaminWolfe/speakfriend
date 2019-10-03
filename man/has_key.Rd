@@ -4,7 +4,7 @@
 \alias{has_key}
 \title{Check for key}
 \usage{
-has_key(key, ring = getOption("speak.keyring", "friend"))
+has_key(key, ring = getOption("keyring_keyring", "friend"))
 }
 \arguments{
 \item{key}{Character. The system for which the user wants to check
@@ -20,7 +20,7 @@ Has the user set up a given password?
 }
 \details{
 Function includes checks for \code{\link{has_keyring}}
-and \code{\link{keyring_is_locked}}.
+and \code{\link{keyring_locked}}.
 }
 \examples{
 \dontrun{

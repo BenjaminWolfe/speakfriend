@@ -1,52 +1,65 @@
-# first create a bare, unlocked keyring called test, with password asdf
-#   speakfriend::drop_keyring("test")
-#   speakfriend::create_keyring("test")
+context("happy path")
 
-library(testthat)
-library(speakfriend)
-options(speak.keyring = "test")
+old_keyring <- getOption("keyring_keyring")
+on.exit(options(keyring_keyring = old_keyring), add = TRUE)
+options(keyring_keyring = "DurinDoors")
+
+test_that("creating keychains", {
+  need_keyring()
+  create_dummy_keyring()
+})
 
 test_that("has keyring", {
-  expect_equal(has_keyring(), TRUE)
+  need_keyring()
+  expect_true(has_keyring())
 })
 
 test_that("keyring unlocked", {
-  expect_equal(keyring_is_locked(), FALSE)
+  need_keyring()
+  expect_false(keyring_locked())
 })
 
 test_that("can lock keyring", {
-  lock_keyring()
-  expect_equal(keyring_is_locked(), TRUE)
+  need_keyring()
+  expect_silent(lock_keyring())
+  expect_true(keyring_locked())
 })
 
 test_that("can unlock keyring", {
-  unlock_keyring(master_password = "asdf")
-  expect_equal(keyring_is_locked(), FALSE)
+  need_keyring()
+  expect_silent(unlock_keyring(master_password = "M3110n!"))
+  expect_false(keyring_locked())
 })
 
 test_that("no keys exist yet", {
+  need_keyring()
   expect_equal(list_keys(), character(0))
 })
 
 test_that("doesn't have test key yet", {
-  expect_equal(has_key("skeleton"), FALSE)
+  need_keyring()
+  expect_false(has_key("star"))
 })
 
 test_that("can add test key", {
-  set_key(key = "skeleton", password = "bones")
-  expect_equal(has_key("skeleton"), TRUE)
+  need_keyring()
+  expect_silent(set_key(key = "star", password = "Fenn@sN0g0thr1m"))
+  expect_true(has_key("star"))
 })
 
 test_that("can get test key", {
-  expect_equal(get_key("skeleton"), "bones")
+  need_keyring()
+  expect_equal(get_key("star"), "Fenn@sN0g0thr1m")
 })
 
 test_that("can drop test key", {
-  drop_key("skeleton")
-  expect_equal(has_key("skeleton"), FALSE)
+  need_keyring()
+  expect_silent(drop_key("star"))
+  expect_false(has_key("star"))
 })
 
 test_that("can drop keyring", {
-  drop_keyring()
-  expect_equal(has_keyring(), FALSE)
+  need_keyring()
+  expect_silent(drop_keyring())
+  expect_false(has_keyring())
 })

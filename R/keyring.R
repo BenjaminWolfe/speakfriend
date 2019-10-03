@@ -11,7 +11,7 @@
 #' \dontrun{
 #' has_keyring()
 #' }
-has_keyring <- function(ring = getOption("speak.keyring", "friend")) {
+has_keyring <- function(ring = getOption("keyring_keyring", "friend")) {
   ring %in% keyring::keyring_list()$keyring
 }
 
@@ -30,7 +30,7 @@ has_keyring <- function(ring = getOption("speak.keyring", "friend")) {
 #' \dontrun{
 #' create_keyring()
 #' }
-create_keyring <- function(ring = getOption("speak.keyring", "friend")) {
+create_keyring <- function(ring = getOption("keyring_keyring", "friend")) {
 
   if (has_keyring(ring)) {
     if (!interactive_session()) {
@@ -98,7 +98,7 @@ create_keyring <- function(ring = getOption("speak.keyring", "friend")) {
 #' \dontrun{
 #' drop_keyring()
 #' }
-drop_keyring <- function(ring = getOption("speak.keyring", "friend")) {
+drop_keyring <- function(ring = getOption("keyring_keyring", "friend")) {
   if (!has_keyring(ring)) {
     if (!interactive_session()) {
       message("no keyring to drop")
@@ -120,7 +120,7 @@ drop_keyring <- function(ring = getOption("speak.keyring", "friend")) {
 
 #' Offer to set up keyring
 #'
-#' Unexported, used in \code{\link{keyring_is_locked}}
+#' Unexported, used in \code{\link{keyring_locked}}
 #' and \code{\link{unlock_keyring}}.
 #'
 #' Will set up keyring if user accepts, or fail informatively otherwise.
@@ -129,7 +129,7 @@ drop_keyring <- function(ring = getOption("speak.keyring", "friend")) {
 #'
 #' @return Logical. Does the user want to set up a master password?
 #' @import rlang
-offer_keyring <- function(ring = getOption("speak.keyring", "friend")) {
+offer_keyring <- function(ring = getOption("keyring_keyring", "friend")) {
 
   user_agrees <- function() {
     rstudioapi::showQuestion(
@@ -166,9 +166,9 @@ offer_keyring <- function(ring = getOption("speak.keyring", "friend")) {
 #'
 #' @examples
 #' \dontrun{
-#' keyring_is_locked()
+#' keyring_locked()
 #' }
-keyring_is_locked <- function(ring = getOption("speak.keyring", "friend")) {
+keyring_locked <- function(ring = getOption("keyring_keyring", "friend")) {
 
   if (!has_keyring(ring)) {
     offer_keyring(ring)
@@ -184,7 +184,7 @@ keyring_is_locked <- function(ring = getOption("speak.keyring", "friend")) {
 #' Hide passwords from other users until master password is entered later.
 #'
 #' Function includes checks for \code{\link{has_keyring}}
-#' and \code{\link{keyring_is_locked}}.
+#' and \code{\link{keyring_locked}}.
 #' If the keyring is already locked,
 #' \code{\link{lock_keyring}} will message the user.
 #'
@@ -197,9 +197,9 @@ keyring_is_locked <- function(ring = getOption("speak.keyring", "friend")) {
 #' \dontrun{
 #' lock_keyring()
 #' }
-lock_keyring <- function(ring = getOption("speak.keyring", "friend")) {
+lock_keyring <- function(ring = getOption("keyring_keyring", "friend")) {
 
-  if (keyring_is_locked(ring)) {
+  if (keyring_locked(ring)) {
     if (!interactive_session()) {
       message("keyring already locked")
 
@@ -230,7 +230,7 @@ lock_keyring <- function(ring = getOption("speak.keyring", "friend")) {
 #' and either way it will show up in your \code{.Rhistory} file.
 #'
 #' Function includes checks for \code{\link{has_keyring}}
-#' and \code{\link{keyring_is_locked}}.
+#' and \code{\link{keyring_locked}}.
 #' If the keyring is already unlocked,
 #' \code{\link{unlock_keyring}} will message the user.
 #'
@@ -252,7 +252,7 @@ lock_keyring <- function(ring = getOption("speak.keyring", "friend")) {
 #' }
 unlock_keyring <- function(master_password = NULL,
                            key = NULL,
-                           ring = getOption("speak.keyring", "friend")) {
+                           ring = getOption("keyring_keyring", "friend")) {
 
   # messaging is different if user creates a new master password
   # than if user has one and it's already unlocked (next code block)
@@ -262,7 +262,7 @@ unlock_keyring <- function(master_password = NULL,
     return(invisible())
   }
 
-  if (!keyring_is_locked(ring)) {
+  if (!keyring_locked(ring)) {
     if (!interactive_session()) {
       message("keyring not locked")
 

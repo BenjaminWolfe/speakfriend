@@ -4,7 +4,7 @@
 \alias{drop_keyring}
 \title{Drop the keyring}
 \usage{
-drop_keyring(ring = getOption("speak.keyring", "friend"))
+drop_keyring(ring = getOption("keyring_keyring", "friend"))
 }
 \arguments{
 \item{ring}{Optional. Name of keyring.}

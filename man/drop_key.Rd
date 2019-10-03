@@ -4,7 +4,7 @@
 \alias{drop_key}
 \title{Forget a key}
 \usage{
-drop_key(key, ring = getOption("speak.keyring", "friend"))
+drop_key(key, ring = getOption("keyring_keyring", "friend"))
 }
 \arguments{
 \item{key}{Character. The system for which yser wants to retrieve a password.}
@@ -19,7 +19,7 @@ Delete the password for a given system.
 }
 \details{
 Function includes checks for \code{\link{has_keyring}},
-\code{\link{keyring_is_locked}}, and \code{\link{has_key}}.
+\code{\link{keyring_locked}}, and \code{\link{has_key}}.
 }
 \examples{
 \dontrun{

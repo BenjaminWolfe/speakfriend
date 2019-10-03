@@ -4,7 +4,7 @@
 \alias{has_keyring}
 \title{Check for keyring}
 \usage{
-has_keyring(ring = getOption("speak.keyring", "friend"))
+has_keyring(ring = getOption("keyring_keyring", "friend"))
 }
 \arguments{
 \item{ring}{Optional. Name of keyring.}
