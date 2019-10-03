@@ -2,8 +2,6 @@
 
 language: R
 cache: packages
-latex: false
-fortran: false
 before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
   provider: script
@@ -24,20 +22,25 @@ deploy:
 
 # also OSX failed w/ "fatal error: 'stdlib.h' file not found";
 # so changed `osx_image` per https://travis-ci.community/t/r-3-6-broke-build-with-gcc-5-3-cant-find-stdlib-h/3227/5
+
+# SSL still failing on Linux.
+#   decided at least to simplify: one linux build, one mac
+#   also removed latex false and fortran false, whims inspired by sodium repo
+# on mac now get...
+#   Installing md5deep
+#   /Users/travis/.casher/bin/casher: line 208: brew: command not found
+# poked around Googling this error; other people saw similar errors...
+#   https://github.com/robotology/idyntree/issues/380
+#   https://github.com/travis-ci/travis-ci/issues/3448
+# guessing, decided to add brew update and brew install md5deep before_install
 matrix:
   include:
-    - dist: trusty
     - dist: xenial
     - os: osx
       brew_packages: libsodium
-    - os: osx
-      osx_image: xcode11
-      disable_homebrew: true
 
-# PPA is only needed for (legacy) Trusty. Can be removed when Trusty is EOL.
-addons:
-  apt:
-    sources:
-    - sourceline: 'ppa:chris-lea/libsodium'
-    packages:
-      - libsodium-dev
+before_install:
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+    brew update;
+    brew install md5deep;
+    fi
