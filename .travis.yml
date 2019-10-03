@@ -12,6 +12,18 @@ deploy:
 
 # added `matrix` and `addons` sections from `sodium/.travis.yml`, as travis log
 # indicated that "Configuration failed because libsodium was not found."
+
+# then "no deploy key found" so ran...
+# remotes::install_github("ropenscilabs/travis")
+# travis::use_travis_deploy()
+
+# then callr subprocess failed: SSL certificate problem: certificate has expired
+# so deleted keys and ran the following:
+# travis::travis_enable()
+# travis::use_travis_deploy()
+
+# also OSX failed w/ "fatal error: 'stdlib.h' file not found";
+# so changed `osx_image` per https://travis-ci.community/t/r-3-6-broke-build-with-gcc-5-3-cant-find-stdlib-h/3227/5
 matrix:
   include:
     - dist: trusty
@@ -19,7 +31,7 @@ matrix:
     - os: osx
       brew_packages: libsodium
     - os: osx
-      osx_image: xcode7.3
+      osx_image: xcode11
       disable_homebrew: true
 
 # PPA is only needed for (legacy) Trusty. Can be removed when Trusty is EOL.
