@@ -32,7 +32,7 @@ list_keys <- function(key = NULL,
     ok_to_proceed <- function() {
       rstudioapi::showQuestion(
         title   = "Your Master Password",
-        message = paste(
+        message = paste0(
           "To access ", reusable_messaging, ", ",
           "you'll need to enter your master password. ",
           "OK to proceed?"
@@ -40,7 +40,7 @@ list_keys <- function(key = NULL,
       )
     }
 
-    if (!interactive_session() %||% !ok_to_proceed()) {
+    if (!interactive_session() || !ok_to_proceed()) {
       stop("unlock keyring with unlock_keyring()")
     }
 
@@ -130,7 +130,7 @@ set_key <- function(key,
     if (!ok_to_change) stop("key already exists")
   }
 
-  prompt_for_password <- function(key) {
+  prompt_for_password <- function() {
     if (!interactive_session()) stop("cannot prompt user for password")
 
     rstudioapi::showDialog(
@@ -174,7 +174,7 @@ set_key <- function(key,
 get_key <- function(key,
                     ring = getOption("keyring_keyring", "friend")) {
 
-  wants_key <- function(key) {
+  wants_key <- function() {
     if (!interactive_session()) return(FALSE)
 
     rstudioapi::showQuestion(

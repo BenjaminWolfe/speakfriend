@@ -1,5 +1,13 @@
-* create a hex logo
+# TODO
+
+* continue developing tests (see below)
 * get Travis CI working (fix Mac? drop Mac?)
-* develop tests for non-interactive messaging
-* develop (and skip) manual tests for interactive messaging
+* group functions in pkgdown, especially unexported / re-exported ones, if kept
+* create a hex logo
 * submit to CRAN
+
+# tests to develop
+
+* interactive, no keyring, add when prompted
+* interactive, create key adding password via dialog box
+* automated, cannot create key via dialog box

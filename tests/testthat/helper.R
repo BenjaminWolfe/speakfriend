@@ -109,3 +109,7 @@ create_dummy_keyring <- function() {
 
   invisible()
 }
+
+skip_if_automated <- function() {
+  if (currently_testing()) skip("requires interaction")
+}

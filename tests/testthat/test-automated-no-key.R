@@ -1,5 +1,6 @@
-context("happy path")
+context("no key")
 
+# create and test keyring, leave *unlocked and empty*
 old_keyring <- getOption("keyring_keyring")
 teardown(options(keyring_keyring = old_keyring))
 setup(options(keyring_keyring = "DurinDoors"))
@@ -19,18 +20,6 @@ test_that("keyring unlocked", {
   expect_false(keyring_locked())
 })
 
-test_that("can lock keyring", {
-  need_keyring()
-  expect_silent(lock_keyring())
-  expect_true(keyring_locked())
-})
-
-test_that("can unlock keyring", {
-  need_keyring()
-  expect_silent(unlock_keyring(master_password = "M3110n!"))
-  expect_false(keyring_locked())
-})
-
 test_that("no keys exist yet", {
   need_keyring()
   expect_equal(list_keys(), character(0))
@@ -41,23 +30,18 @@ test_that("doesn't have test key yet", {
   expect_false(has_key("star"))
 })
 
-test_that("can add test key", {
+# test error messages for missing key in non-interactive session
+test_that("cannot get non-existent test key", {
   need_keyring()
-  expect_silent(set_key(key = "star", password = "Fenn@sN0g0thr1m"))
-  expect_true(has_key("star"))
+  expect_error(get_key("star"), "password not set for star")
 })
 
-test_that("can get test key", {
+test_that("cannot drop non-existent test key", {
   need_keyring()
-  expect_equal(get_key("star"), "Fenn@sN0g0thr1m")
+  expect_error(drop_key("star"), "password not set for star")
 })
 
-test_that("can drop test key", {
-  need_keyring()
-  expect_silent(drop_key("star"))
-  expect_false(has_key("star"))
-})
-
+# drop keyring for next set of tests
 test_that("can drop keyring", {
   need_keyring()
   expect_silent(drop_keyring())

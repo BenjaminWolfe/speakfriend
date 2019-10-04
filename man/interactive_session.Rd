@@ -15,4 +15,6 @@ Unexported. Is the function being called in an interactive setting?
 \details{
 \code{\link[base]{interactive}} has thrown errors for me in the past.
 This way all such errors are abstracted out to a single function.
+
+It also allows me to check for \code{\link{currently_testing}}.
 }

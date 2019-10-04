@@ -74,7 +74,7 @@ create_keyring <- function(ring = getOption("keyring_keyring", "friend")) {
   keyring::keyring_create(keyring = ring)
 
   rstudioapi::showDialog(
-    title   = "Your Master Password",
+    title   = "Gratuitous LoTR Reference",
     message = "Keep it secret. <i>Keep it safe!</i>"
   )
 
@@ -142,7 +142,7 @@ offer_keyring <- function(ring = getOption("keyring_keyring", "friend")) {
     )
   }
 
-  if (!interactive_session() %||% !user_agrees()) {
+  if (!interactive_session() || !user_agrees()) {
     stop(
       "the keyring does not appear to be set up; ",
       "use speakfriend::create_keyring() to set it up"
