@@ -1,0 +1,5 @@
+* create a hex logo
+* get Travis CI working (fix Mac? drop Mac?)
+* develop tests for non-interactive messaging
+* develop (and skip) manual tests for interactive messaging
+* submit to CRAN

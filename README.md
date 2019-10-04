@@ -7,6 +7,10 @@
 
 [![Travis build
 status](https://travis-ci.org/BenjaminWolfe/speakfriend.svg?branch=master)](https://travis-ci.org/BenjaminWolfe/speakfriend)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/BenjaminWolfe/speakfriend?branch=master&svg=true)](https://ci.appveyor.com/project/BenjaminWolfe/speakfriend)
+[![Codecov test
+coverage](https://codecov.io/gh/BenjaminWolfe/speakfriend/branch/master/graph/badge.svg)](https://codecov.io/gh/BenjaminWolfe/speakfriend?branch=master)
 <!-- badges: end -->
 
 `speakfriend` is designed for R champions and enthusiasts who want to
