@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# speakfriend
+# speakfriend <img src='man/figures/logo.png' align="right" height="138.5" />
 
 <!-- badges: start -->
 
@@ -126,3 +126,18 @@ you can use the package without specifying anything about keyrings.
 `speakfriend` does not currently allow multiple usernames per system,
 again as a bid for simplicity. For any given system, you simply call
 `get_key("system_name")` to get the user’s one password for that sytem.
+
+## Font Attribution
+
+The `speakfriend` hex logo uses the [Party
+Business](https://www.fontspace.com/nancy-lorenz/party-business) font by
+Nancy Lorenz. A die-hard LotR fan might note (and do well in noting)
+that the font is inspired by the handwriting of Bilbo Baggins, a humble
+hobbit, rather than that of the legendary elves who forged the Doors of
+Durin. On that note, though, this package really should be for the
+Bilbos of the world. Besides, elvish fonts are hard to come by, and this
+one is license-free.
+
+I did make one modification to the original font. Lorenz’s “k” has a
+crossbar that makes it look a bit like an “r.” And “spearfriend” would
+have made for a rather imposing R package.

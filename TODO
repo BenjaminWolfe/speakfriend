@@ -1,9 +1,14 @@
 # TODO
 
+* consider a prompt_keyring_lock function, to allow package devs to do this:
+  `if (keyring_locked()) on.exit(prompt_keyring_lock())`
+  (have it check that it's locked first, and if it is it just does nothing)
+* create options for when the user is not using RStudio?
+* check what happens when knitting R Markdown?
 * continue developing tests (see below)
 * get Travis CI working (fix Mac? drop Mac?)
 * group functions in pkgdown, especially unexported / re-exported ones, if kept
-* create a hex logo
+* increase the size of the text in the hex logo, re-deploy with use_logo
 * submit to CRAN
 
 # tests to develop
@@ -11,3 +16,4 @@
 * interactive, no keyring, add when prompted
 * interactive, create key adding password via dialog box
 * automated, cannot create key via dialog box
+* test the prompt_keyring_lock function, if I create that
