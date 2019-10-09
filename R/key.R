@@ -36,7 +36,9 @@ list_keys <- function(key = NULL,
           "To access ", reusable_messaging, ", ",
           "you'll need to enter your master password. ",
           "OK to proceed?"
-        )
+        ),
+        ok     = "Yes",
+        cancel = "No"
       )
     }
 
@@ -116,7 +118,9 @@ set_key <- function(key,
       if (!interactive_session()) return(FALSE)
       rstudioapi::showQuestion(
         title   = "Change Password",
-        message = "Password already exists. OK to change?"
+        message = "Password already exists. OK to change?",
+        ok      = "Yes",
+        cancel  = "No"
       )
     }
 
@@ -182,7 +186,9 @@ get_key <- function(key,
       message = paste0(
         "It looks like you don't have a password set up for ", key, ". ",
         "Would you like to take care of that now?"
-      )
+      ),
+      ok     = "Yes",
+      cancel = "No"
     )
   }
 

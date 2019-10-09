@@ -138,7 +138,9 @@ offer_keyring <- function(ring = getOption("keyring_keyring", "friend")) {
         "It looks like your keyring isn't set up",
         "(a place for keeping all your passwords).",
         "Would you like to take care of that now?"
-      )
+      ),
+      ok     = "Yes",
+      cancel = "No"
     )
   }
 
