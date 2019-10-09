@@ -1,6 +1,6 @@
 Package: speakfriend
 Title: Very Easy Password Management
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: 
     person(given = c("Benjamin", "E."),
            family = "Wolfe",
