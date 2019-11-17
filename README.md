@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# speakfriend <img src='man/figures/logo.png' align="right" height="138.5" />
+# speakfriend <img src='man/figures/logo.svg' align="right" height="138.5" />
 
 <!-- badges: start -->
 
@@ -13,9 +13,16 @@ status](https://ci.appveyor.com/api/projects/status/github/BenjaminWolfe/speakfr
 coverage](https://codecov.io/gh/BenjaminWolfe/speakfriend/branch/master/graph/badge.svg)](https://codecov.io/gh/BenjaminWolfe/speakfriend?branch=master)
 <!-- badges: end -->
 
-`speakfriend` is designed for R champions and enthusiasts who want to
-make analysis easy at their school or place of work, without perhaps
-having a comprehensive solution such as Rstudio Server (yet\!).
+`speakfriend` offers simple, straightforward password management for R
+users and advocates.
+
+Password management is what [Emily
+Riederer](https://twitter.com/EmilyRiederer) calls a “[first-mile
+task](https://emilyriederer.netlify.com/post/resource-roundup-r-in-industry-edition/),”
+the kind an R champion should make as simple as possible, as early as
+possible, to empower and engage their community. `speakfriend` builds on
+the powerful and flexible `keyring` package to help community developers
+do just that.
 
 [RStudio](https://rstudio.com/)’s
 [keyring](https://github.com/r-lib/keyring) package provides secure
@@ -42,14 +49,6 @@ article](https://www.infoworld.com/article/3320999/r-tip-keep-your-passwords-and
     and stores just one password per system. This is all many users
     need. `keyring` allows more options, outlined below under
     *Nomenclature*.
-
-`keyring` is a powerful and flexible package. `speakfriend` seeks to
-address tasks important to developing an active R community. These are
-what [Emily Riederer](https://twitter.com/EmilyRiederer) calls
-[first-mile
-tasks](https://emilyriederer.netlify.com/post/resource-roundup-r-in-industry-edition/),
-tasks you should make as simple as possible, as early as possible, to
-empower and engage your community.
 
 ## Installation
 

@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# speakfriend <img src='man/figures/logo.png' align="right" height="138.5" />
+# speakfriend <img src='man/figures/logo.svg' align="right" height="138.5" />
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/BenjaminWolfe/speakfriend.svg?branch=master)](https://travis-ci.org/BenjaminWolfe/speakfriend)
@@ -21,9 +21,14 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/BenjaminWolfe/speakfriend/branch/master/graph/badge.svg)](https://codecov.io/gh/BenjaminWolfe/speakfriend?branch=master)
 <!-- badges: end -->
 
-`speakfriend` is designed for R champions and enthusiasts
-who want to make analysis easy at their school or place of work,
-without perhaps having a comprehensive solution such as Rstudio Server (yet!).
+`speakfriend` offers simple, straightforward password management
+for R users and advocates.
+
+Password management is what [Emily Riederer][5] calls a "[first-mile task][6],"
+the kind an R champion should make as simple as possible, as early as possible,
+to empower and engage their community.
+`speakfriend` builds on the powerful and flexible `keyring` package
+to help community developers do just that.
 
 [RStudio][1]'s [keyring][2] package provides secure password management for R,
 as [Sharon Machlis][3] outlines in [this excellent article][4].
@@ -49,13 +54,6 @@ as [Sharon Machlis][3] outlines in [this excellent article][4].
    `speakfriend` uses just one keyring and stores just one password per system.
    This is all many users need.
    `keyring` allows more options, outlined below under _Nomenclature_.
-
-`keyring` is a powerful and flexible package.
-`speakfriend` seeks to address tasks important to developing
-an active R community.
-These are what [Emily Riederer][5] calls [first-mile tasks][6],
-tasks you should make as simple as possible, as early as possible,
-to empower and engage your community.
 
 ## Installation
 
